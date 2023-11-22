@@ -1,5 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: relisalles <relisalles@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/20 11:11:29 by relisalles        #+#    #+#             */
+/*   Updated: 2023/11/20 18:18:11 by relisalles       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
+
 #include <unistd.h>
-// #include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 static int countDigits(int nbr)
@@ -56,15 +70,4 @@ int main(void)
 
 	return 0;
 }
-
-/*Assignment name  : ft_itoa
-Expected files   : ft_itoa.c
-Allowed functions: malloc
---------------------------------------------------------------------------------
-
-Write a function that takes an int and converts it to a null-terminated string.
-The function returns the result in a char array that you must allocate.
-
-Your function must be declared as follows:
-
-char	*ft_itoa(int nbr);*/
+*/
