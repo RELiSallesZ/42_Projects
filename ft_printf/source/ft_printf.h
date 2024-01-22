@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rsalles- <rsalles-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 12:51:54 by rsalles-          #+#    #+#             */
-/*   Updated: 2024/01/17 12:53:52 by rsalles-         ###   ########.fr       */
+/*   Created: 2023/11/01 13:56:56 by rsalles-          #+#    #+#             */
+/*   Updated: 2024/01/17 14:20:23 by rsalles-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int	ft_putnbr(int nb);
 int	ft_puthex(unsigned int nb, char c);
 int	ft_putptr(void *ptr);
 int	ft_putunsignednbr(unsigned int nb);
-int	conversions(char k, va_list args);
+int	convert(char k, va_list args);
 
 #endif
