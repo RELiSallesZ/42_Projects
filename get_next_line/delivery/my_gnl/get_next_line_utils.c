@@ -6,7 +6,7 @@
 /*   By: relisallesz <relisallesz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:06:10 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/01/25 17:44:10 by relisallesz      ###   ########.fr       */
+/*   Updated: 2024/02/05 16:12:44 by relisallesz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,26 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	}
 	dest[i + j] = '\0';
 	return (dest);
+}
+
+
+size_t	ft_strlcat(char *dest, char *src, unsigned int size)
+{
+	unsigned int	i;
+	unsigned int	j;
+
+	i = 0;
+	j = 0;
+	while (dest[i] && i < size)
+	{
+		i++;
+	}
+	while (src[j] && (i + j +1) < size)
+	{
+		dest[i + j] = src[j];
+		j++;
+	}
+	if (i < size)
+		dest[i + j] = '\0';
+	return (i + ft_strlen(src));
 }

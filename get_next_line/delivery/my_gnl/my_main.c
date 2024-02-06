@@ -6,70 +6,54 @@
 /*   By: relisallesz <relisallesz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 10:45:32 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/01/25 19:04:21 by relisallesz      ###   ########.fr       */
+/*   Updated: 2024/02/06 15:55:17 by relisallesz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//calloc p alocar memoria, lembra de fazer o free 
-
-//read para abrir o arquivo r criar o teco
-
-//variavel global para alterar o tamanho do teco
-
-//strjoin para gravar os tecos no buffer
-
-//get next line para identificar nova linha, imprimi-la e exclui-la do buffer
-
-//main que atribui o fd a uma variavel e grama gnl em looping passando o fd
-
 #include "get_next_line.h"
-#include <stdio.h>
-#include <fcntl.h>
 
-static char    *get_chunk(int fd)
+struct afifa
 {
-    char       *chunk;
-    int        readed;
+    char nome;
+    int idade;
     
-    chunk = ft_calloc((BUFFER_SIZE + 1) , sizeof(char));
+};
+
+
+char	*get_chunck(int fd)
+{
+    char        *chunk;
+    int          bytes_read;
+    static int  calls;
+    char        *buffer;
+
+    calls = 1 + calls;
+    chunk = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
     if(chunk == NULL)
         return (NULL);
-    read(fd, chunk, BUFFER_SIZE);
-    if(read <= 0)
-    {
-        return(free(chunk),NULL);
-    }
-    return(chunk);
+    bytes_read = read(fd, chunk, BUFFER_SIZE);
+        if (bytes_read <= 0)
+        {
+            free(chunk);
+            return (NULL);
+        }
+    chunk[BUFFER_SIZE + 1] = '\0';
+    
+    printf("calls = %i\n", calls);
+    buffer = calloc((1 + (BUFFER_SIZE * calls)), sizeof(char));
+    
+    buffer = ft_strlcat(buffer, chunk, (1 + (BUFFER_SIZE * calls)));
+    
+    return (chunk);
 }
+
+
+
+
 
 char	*get_next_line(int fd)
 {
-    char        *chunk;
-    int         i;
-    char        *buffer;
-    char        *line;
-    
-    buffer = ft_strjoin(buffer, get_chunk(fd));
-    i = 0;
-    while (i < ft_strlen(buffer))
-    {
-        if (buffer[i] == '\n')
-        {
-            while (i >= 0)
-            {
-                line = buffer;
-                line[i + 1] = '\0';
-                line[i] = buffer [i];
-                
-            }
-            
-        }
-        
-        i++;        
-    }
-    
-    printf("buffer = %s\n", buffer);
-    i = 0;
+    return(get_chunck(fd));
 }
 
 int main ()
@@ -78,10 +62,12 @@ int main ()
 
     fd = open("test.txt", O_RDONLY);
     if(fd < 0)
-        printf("file not found\n");
+        printf("file not found");
 
-    get_next_line(fd);
-            
+    printf("1GNL retorna= %s\n\n\n", get_next_line(fd));
+    printf("2GNL retorna= %s\n\n\n", get_next_line(fd));
+    printf("2GNL retorna= %s\n\n\n", get_next_line(fd));
+    printf("2GNL retorna= %s\n\n\n", get_next_line(fd));
+    
     return(0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: relisallesz <relisallesz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 10:54:19 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/01/25 18:23:44 by relisallesz      ###   ########.fr       */
+/*   Updated: 2024/02/05 16:13:01 by relisallesz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	*ft_calloc(size_t count, size_t size);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);
-
+size_t	ft_strlcat(char *dest, char *src, unsigned int size);
 
 #endif

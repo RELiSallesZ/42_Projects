@@ -5,18 +5,13 @@
       "includePath": [
         "${workspaceFolder}/**"
       ],
-      "defines": [],
       "compilerPath": "/usr/bin/gcc",
       "cStandard": "${default}",
       "cppStandard": "${default}",
-      "intelliSenseMode": "linux-gcc-x64"
-    },
-    {
-      "name": "ubuntu",
-      "includePath": [
-        "${workspaceFolder}/**"
-      ],
-      "defines": []
+      "intelliSenseMode": "linux-gcc-x64",
+      "compilerArgs": [
+        ""
+      ]
     }
   ],
   "version": 4
