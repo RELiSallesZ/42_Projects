@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/relisallesz/projects/gnl",
-      "program": "/home/relisallesz/projects/gnl/build/Debug/outDebug",
+      "cwd": "/home/relisallesz/Projects/RELiSallesz/get_next_line/delivery/my_gnl",
+      "program": "/home/relisallesz/Projects/RELiSallesz/get_next_line/delivery/my_gnl/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
