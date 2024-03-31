@@ -6,7 +6,7 @@
 /*   By: relisallesz <relisallesz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 19:46:16 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/03/28 19:22:06 by relisallesz      ###   ########.fr       */
+/*   Updated: 2024/03/31 14:33:26 by relisallesz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*fr_free(char *buffer, char *buf)
 {
 	char	*temp;
 
-	temp = ft_strjoin(buffer, buf);
+	temp = ft_strjoin(buffer, buf) ;
 	free(buffer);
 	return (temp);
 }

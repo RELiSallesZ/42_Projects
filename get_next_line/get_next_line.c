@@ -6,10 +6,9 @@
 /*   By: relisallesz <relisallesz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 20:09:05 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/03/28 19:46:05 by relisallesz      ###   ########.fr       */
+/*   Updated: 2024/03/31 15:20:18 by relisallesz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "get_next_line.h"
 
@@ -17,7 +16,7 @@ char	*make_line_andfree(char *main_buffer, char *temp_buffer)
 {
 	char	*temp_line;
 
-	temp_line = ft_strjoin(main_buffer, temp_buffer);
+	temp_line = ft_strjoin(main_buffer, temp_buffer) ;
 	free(main_buffer);
 	return (temp_line);
 }
@@ -99,7 +98,13 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	{
+		free(line);
+		free(main_buffer);
+		line = NULL;
+		main_buffer = NULL;
 		return (NULL);
+	}
 	main_buffer = read_file(fd, main_buffer);
 	if (!main_buffer)
 		return (NULL);
