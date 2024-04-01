@@ -1,19 +1,37 @@
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
-#endif
-# define OPEN_MAX 5
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: relisallesz <relisallesz@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/01 09:25:55 by relisallesz       #+#    #+#             */
+/*   Updated: 2024/04/01 18:47:44 by relisallesz      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+#endif
+
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 5
+#endif
+
+#ifndef MAX_FILES_OPEN
+# define MAX_FILES_OPEN 10240
+#endif
+
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <fcntl.h> // Para open e O_RDONLY
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strchr(const char *s1, int n);
 void	*ft_calloc(size_t count, size_t size);
 size_t	ft_strlen(const char *theString);
-
-#endif
+char	*ft_strdup(char *s1);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
