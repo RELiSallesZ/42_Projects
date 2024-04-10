@@ -59,6 +59,7 @@
   "files.associations": {
     "*.embeddedhtml": "html",
     "types.h": "c",
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "get_next_line.h": "c"
   }
 }
