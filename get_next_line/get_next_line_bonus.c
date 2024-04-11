@@ -6,13 +6,13 @@
 /*   By: relisallesz <relisallesz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 09:54:36 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/04/11 18:24:58 by relisallesz      ###   ########.fr       */
+/*   Updated: 2024/04/11 18:41:36 by relisallesz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-static char	*fill_line_buffer(int fd, char *left_c, char *buffer)
+static char	*make_main_buffer(int fd, char *left_c, char *buffer)
 {
 	ssize_t	byte_read;
 	char	*tmp;
@@ -40,9 +40,9 @@ static char	*fill_line_buffer(int fd, char *left_c, char *buffer)
 	return (left_c);
 }
 
-static char	*set_line(char *line_buffer)
+static char	*make_line(char *line_buffer)
 {
-	char	*left_char;
+	char	*main_buffer;
 	ssize_t	i;
 
 	i = 0;
@@ -50,39 +50,39 @@ static char	*set_line(char *line_buffer)
 		i++;
 	if (line_buffer[i] == 0)
 		return (0);
-	left_char = ft_substr(line_buffer, i + 1, ft_strlen(line_buffer) - 1);
-	if (*left_char == 0)
+	main_buffer = ft_substr(line_buffer, i + 1, ft_strlen(line_buffer) - 1);
+	if (*main_buffer == 0)
 	{
-		free(left_char);
-		left_char = NULL;
+		free(main_buffer);
+		main_buffer = NULL;
 	}
 	line_buffer[i + 1] = 0;
-	return (left_char);
+	return (main_buffer);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*left_char[MAX_FD];
-	char		*line;
+	static char	*main_buffer[MAX_FD];
+	char		*next_line;
 	char		*buffer;
 
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (fd < 0 || fd > MAX_FD || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 	{
 		free(buffer);
-		free(left_char[fd]);
-		left_char[fd] = NULL;
+		free(main_buffer[fd]);
+		main_buffer[fd] = NULL;
 		buffer = NULL;
 		return (NULL);
 	}
 	if (!buffer)
 		return (NULL);
-	line = fill_line_buffer(fd, left_char[fd], buffer);
+	next_line = make_main_buffer(fd, main_buffer[fd], buffer);
 	free(buffer);
-	if (!line)
+	if (!next_line)
 		return (NULL);
-	left_char[fd] = set_line(line);
-	return (line);
+	main_buffer[fd] = make_line(next_line);
+	return (next_line);
 }
 
 // int	main(void)
