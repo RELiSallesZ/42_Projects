@@ -6,102 +6,102 @@
 /*   By: relisallesz <relisallesz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 09:54:36 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/04/11 18:41:24 by relisallesz      ###   ########.fr       */
+/*   Updated: 2024/04/11 21:48:10 by relisallesz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*update_main_buffer(int fd, char *main_buffer, char *buffer)
+static char	*make_main_buffer(int fd, char *main_buffer, char *read_buffer)
 {
-	ssize_t	buffer_read;
-	char	*tmp;
+	ssize_t	byte_read;
+	char	*temp_main_buffer;
 
-	buffer_read = 1;
-	while (buffer_read > 0)
+	byte_read = 1;
+	while (byte_read > 0)
 	{
-		buffer_read = read(fd, buffer, BUFFER_SIZE);
-		if (buffer_read == -1)
+		byte_read = read(fd, read_buffer, BUFFER_SIZE);
+		if (byte_read == -1)
 		{
 			free(main_buffer);
 			return (NULL);
 		}
-		if (buffer_read == 0)
+		if (byte_read == 0)
 			break ;
-		buffer[buffer_read] = 0;
+		read_buffer[byte_read] = 0;
 		if (!main_buffer)
 			main_buffer = ft_strdup("");
-		tmp = main_buffer;
-		main_buffer = ft_strjoin(tmp, buffer);
-		free(tmp);
-		tmp = NULL;
-		if (ft_strchr(buffer, '\n'))
+		temp_main_buffer = main_buffer;
+		main_buffer = ft_strjoin(temp_main_buffer, read_buffer);
+		free(temp_main_buffer);
+		temp_main_buffer = NULL;
+		if (ft_strchr(read_buffer, '\n'))
 			break ;
 	}
 	return (main_buffer);
 }
 
-static char	*make_line(char *line_buffer)
+static char	*update_main_buffer(char *next_line)
 {
-	char	*main_buffers;
+	char	*updated_main_buffer;
 	ssize_t	i;
 
 	i = 0;
-	while (line_buffer[i] != '\n' && line_buffer[i] != 0)
+	while (next_line[i] != '\n' && next_line[i] != 0)
 		i++;
-	if (line_buffer[i] == 0 || line_buffer[1] == 0)
+	if (next_line[i] == 0 || next_line[1] == 0)
 		return (NULL);
-	main_buffers = ft_substr(line_buffer, i + 1, ft_strlen(line_buffer) - 1);
-	if (*main_buffers == 0)
+	updated_main_buffer = ft_substr(next_line, i + 1, ft_strlen(next_line) - 1);
+	if (*updated_main_buffer == 0)
 	{
-		free(main_buffers);
-		main_buffers = NULL;
+		free(updated_main_buffer);
+		updated_main_buffer = NULL;
 	}
-	line_buffer[i + 1] = 0;
-	return (main_buffers);
+	next_line[i + 1] = 0;
+	return (updated_main_buffer);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*main_buffers;
+	static char	*main_buffer;
 	char		*line;
-	char		*buffer;
+	char		*read_buffer;
 
-	buffer = malloc(BUFFER_SIZE + 1 * sizeof(char));
+	read_buffer = malloc(BUFFER_SIZE + 1 * sizeof(char));
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 	{
-		free(buffer);
-		free(main_buffers);
-		buffer = NULL;
-		main_buffers = NULL;
+		free(read_buffer);
+		free(main_buffer);
+		read_buffer = NULL;
+		main_buffer = NULL;
 		return (NULL);
 	}
-	if (!buffer)
+	if (!read_buffer)
 		return (NULL);
-	line = update_main_buffer(fd, main_buffers, buffer);
-	free(buffer);
-	buffer = NULL;
+	line = make_main_buffer(fd, main_buffer, read_buffer);
+	free(read_buffer);
+	read_buffer = NULL;
 	if (!line)
 		return (NULL);
-	main_buffers = make_line(line);
+	main_buffer = update_main_buffer(line);
 	return (line);
 }
 
-// int	main(void)
-// {
-//  	int	fd;
-//  	int	lines;
-//  	char 	*line;
+int	main(void)
+{
+	int		fd;
+	int		lines;
+	char	*line;
 
-//  	lines = 1;
-//  	fd = open("./example.txt", O_RDONLY);
-//  	line = get_next_line(fd);
-//  	while (line)
-//  	{
-//  		printf("%2d: %s", lines++, line);
-//  		free(line);
-//  		line = get_next_line(fd);
-//  	}
-//  	close(fd);
-//  	return (0);
-//  }
+	lines = 1;
+	fd = open("./example.txt", O_RDONLY);
+	line = get_next_line(fd);
+	while (line)
+	{
+		printf("%2d: %s", lines++, line);
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return (0);
+}
