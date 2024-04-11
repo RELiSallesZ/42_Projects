@@ -6,10 +6,9 @@
 /*   By: relisallesz <relisallesz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 09:21:22 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/04/10 13:47:12 by relisallesz      ###   ########.fr       */
+/*   Updated: 2024/04/11 18:26:42 by relisallesz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "get_next_line.h"
 
