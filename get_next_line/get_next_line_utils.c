@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: relisallesz <relisallesz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rsalles- <rsalles-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 09:21:22 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/04/11 21:49:14 by relisallesz      ###   ########.fr       */
+/*   Updated: 2024/04/15 16:02:11 by rsalles-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

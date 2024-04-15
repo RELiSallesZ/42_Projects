@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: relisallesz <relisallesz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rsalles- <rsalles-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 09:54:36 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/04/11 21:48:10 by relisallesz      ###   ########.fr       */
+/*   Updated: 2024/04/15 17:20:20 by rsalles-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,21 +87,21 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-int	main(void)
-{
-	int		fd;
-	int		lines;
-	char	*line;
+// int	main(void)
+// {
+// 	int		fd;
+// 	int		lines;
+// 	char	*line;
 
-	lines = 1;
-	fd = open("./example.txt", O_RDONLY);
-	line = get_next_line(fd);
-	while (line)
-	{
-		printf("%2d: %s", lines++, line);
-		free(line);
-		line = get_next_line(fd);
-	}
-	close(fd);
-	return (0);
-}
+// 	lines = 1;
+// 	fd = open("./example.txt", O_RDONLY);
+// 	line = get_next_line(fd);
+// 	while (line)
+// 	{
+// 		printf("%2d: %s", lines++, line);
+// 		free(line);
+// 		line = get_next_line(fd);
+// 	}
+// 	close(fd);
+// 	return (0);
+// }
