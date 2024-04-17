@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsalles- <rsalles-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: relisallesz <relisallesz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 09:25:55 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/04/15 16:02:06 by rsalles-         ###   ########.fr       */
+/*   Updated: 2024/04/17 09:08:05 by relisallesz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define GET_NEXT_LINE_BONUS_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
+#  define BUFFER_SIZE 64
 # endif
-# define MAX_FD 4096
+# define MAX_FD 1024
 
 # include <unistd.h>
 # include <stdio.h>
@@ -25,7 +25,7 @@
 
 char	*ft_strchr(const char *str, char c);
 size_t	ft_strlen(const char *str);
-char	*ft_strdup(const char *str);
+void	*ft_calloc(size_t count, size_t size);
 char	*ft_substr(const char *str, unsigned int start, size_t len);
 char	*ft_strjoin(const char *s1, const char *s2);
 

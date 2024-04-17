@@ -3,21 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsalles- <rsalles-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: relisallesz <relisallesz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 09:54:36 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/04/15 17:20:25 by rsalles-         ###   ########.fr       */
+/*   Updated: 2024/04/17 09:02:54 by relisallesz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-static char	*make_main_buffer(int fd, char *main_buffer, char *read_buffer)
+char	*main_buffer_inicialize(const char *str)
+{
+	char	*first;
+
+	first = ft_calloc(ft_strlen(str) + 1, sizeof(char));
+	if (!first)
+	{
+		free(first);
+		return (NULL);
+	}
+	return (first);
+}
+
+char	*make_main_buffer(int fd, char *main_buffer, char *read_buffer)
 {
 	ssize_t	byte_read;
 	char	*temp_main_buffer;
 
-	byte_read = 1;
+	byte_read = 42;
 	while (byte_read > 0)
 	{
 		byte_read = read(fd, read_buffer, BUFFER_SIZE);
@@ -30,7 +43,7 @@ static char	*make_main_buffer(int fd, char *main_buffer, char *read_buffer)
 			break ;
 		read_buffer[byte_read] = 0;
 		if (!main_buffer)
-			main_buffer = ft_strdup("");
+			main_buffer = main_buffer_inicialize("");
 		temp_main_buffer = main_buffer;
 		main_buffer = ft_strjoin(temp_main_buffer, read_buffer);
 		free(temp_main_buffer);
@@ -40,7 +53,7 @@ static char	*make_main_buffer(int fd, char *main_buffer, char *read_buffer)
 	return (main_buffer);
 }
 
-static char	*update_main_buffer(char *next_line)
+char	*update_main_buffer(char *next_line)
 {
 	char	*upd_main_buffer;
 	ssize_t	i;
@@ -66,15 +79,14 @@ char	*get_next_line(int fd)
 	char		*next_line;
 	char		*read_buffer;
 
-	read_buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (fd < 0 || fd > MAX_FD || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || fd > MAX_FD || BUFFER_SIZE <= 0
+		|| read(fd, 0, BUFFER_SIZE - BUFFER_SIZE < 0))
 	{
-		free(read_buffer);
 		free(main_buffer[fd]);
 		main_buffer[fd] = NULL;
-		read_buffer = NULL;
 		return (NULL);
 	}
+	read_buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!read_buffer)
 		return (NULL);
 	next_line = make_main_buffer(fd, main_buffer[fd], read_buffer);
