@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: relisallesz <relisallesz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rsalles- <rsalles-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 20:38:49 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/05/04 14:53:21 by relisallesz      ###   ########.fr       */
+/*   Updated: 2024/05/04 17:23:21 by rsalles-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ void		fractal_init(t_fractal *fractal);
 void		fractal_render(t_fractal *fractal);
 
 //*** math ***
-double		map(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
+double		map(double unscaled_num, double new_min,
+				double new_max, double old_min, double old_max);
 t_complex	sum_complex(t_complex z1, t_complex z2);
 t_complex	square_complex(t_complex z);
 
