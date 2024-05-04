@@ -6,7 +6,7 @@
 /*   By: relisallesz <relisallesz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 20:38:49 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/05/03 21:41:47 by relisallesz      ###   ########.fr       */
+/*   Updated: 2024/05/04 14:53:21 by relisallesz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ typedef struct s_complex
 */
 typedef struct s_img
 {
-	void	*img_ptr; //pointer to image struct
-	char	*pixels_ptr; //points to the actual pixels
+	void	*img_ptr;
+	char	*pixels_ptr;
 	int		bpp;
 	int		endian;
 	int		line_len;

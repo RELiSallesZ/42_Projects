@@ -6,7 +6,7 @@
 /*   By: relisallesz <relisallesz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:53:10 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/05/03 20:50:27 by relisallesz      ###   ########.fr       */
+/*   Updated: 2024/05/04 15:23:26 by relisallesz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 static void	malloc_error(void)
 {
-	perror("Problems with malloc");
+	perror("Malloc ERROR!!!");
 	exit(EXIT_FAILURE);
 }
 
@@ -45,11 +45,11 @@ static void	events_init(t_fractal *fractal)
 void	fractal_init(t_fractal *fractal)
 {
 	fractal->mlx_connection = mlx_init();
-	if (NULL == fractal->mlx_connection)
+	if (fractal->mlx_connection == NULL)
 		malloc_error();
 	fractal->mlx_window = mlx_new_window(fractal->mlx_connection,
 			WIDTH, HEIGHT, fractal->name);
-	if (NULL == fractal->mlx_window)
+	if (fractal->mlx_window == NULL)
 	{
 		mlx_destroy_display(fractal->mlx_connection);
 		free(fractal->mlx_connection);
@@ -57,7 +57,7 @@ void	fractal_init(t_fractal *fractal)
 	}
 	fractal->img.img_ptr = mlx_new_image(fractal->mlx_connection,
 			WIDTH, HEIGHT);
-	if (NULL == fractal->img.img_ptr)
+	if (fractal->img.img_ptr == NULL)
 	{
 		mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
 		mlx_destroy_display(fractal->mlx_connection);
