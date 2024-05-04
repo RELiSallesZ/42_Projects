@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: relisallesz <relisallesz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rsalles- <rsalles-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 19:57:08 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/05/03 21:41:15 by relisallesz      ###   ########.fr       */
+/*   Updated: 2024/05/04 16:54:22 by rsalles-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minilibx-linux/mlx.h"
 #include "fractol.h"
 #include <X11/X.h>
 #include <stdio.h>
@@ -44,10 +43,11 @@ int	key_handler(int keysym, t_fractal *fractal)
 	else if (keysym == XK_minus)
 		fractal->iterations_defintion -= 10;
 	fractal_render(fractal);
-	return 0;
+	return (0);
 }
 
-int	mouse_handler(int button, int x, int y, t_fractal *fractal)
+int	mouse_handler(int button, int __attribute__((unused))x,
+	__attribute__((unused))int y, t_fractal *fractal)
 {
 	if (button == Button5)
 	{
@@ -58,7 +58,7 @@ int	mouse_handler(int button, int x, int y, t_fractal *fractal)
 		fractal->zoom *= 1.05;
 	}
 	fractal_render(fractal);
-	return 0;
+	return (0);
 }
 
 int	julia_track(int x, int y, t_fractal *fractal)

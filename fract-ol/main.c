@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: relisallesz <relisallesz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rsalles- <rsalles-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 19:43:29 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/05/04 14:41:54 by relisallesz      ###   ########.fr       */
+/*   Updated: 2024/05/04 16:51:17 by rsalles-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	main(int ac, char **av)
 {
 	t_fractal	fractal;
 
-	if (2 == ac && !ft_strncmp(av[1], "mandelbrot", 10)
-		|| 4 == ac && !ft_strncmp(av[1], "julia", 5))
+	if ((ac == 2 && (!ft_strncmp(av[1], "mandelbrot", 10)))
+		|| ((ac == 4 && !ft_strncmp(av[1], "julia", 5))))
 	{
 		fractal.name = av[1];
 		if (!ft_strncmp(fractal.name, "julia", 5))
