@@ -6,7 +6,7 @@
 /*   By: rsalles- <rsalles-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 19:57:08 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/05/04 17:22:03 by rsalles-         ###   ########.fr       */
+/*   Updated: 2024/05/04 20:26:11 by rsalles-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,17 @@ int	key_handler(int keysym, t_fractal *fractal)
 	if (keysym == XK_Escape)
 		close_handler(fractal);
 	if (keysym == XK_Left)
-		fractal->shift_x += (0.5 * fractal->zoom);
+		fractal->shift_x += (1 * fractal->zoom);
 	else if (keysym == XK_Right)
-		fractal->shift_x -= (0.5 * fractal->zoom);
+		fractal->shift_x -= (1 * fractal->zoom);
 	else if (keysym == XK_Up)
-		fractal->shift_y -= (0.5 * fractal->zoom);
+		fractal->shift_y -= (1 * fractal->zoom);
 	else if (keysym == XK_Down)
-		fractal->shift_y += (0.5 * fractal->zoom);
-	else if (keysym == XK_plus)
-		fractal->iterations_defintion += 10;
-	else if (keysym == XK_minus)
-		fractal->iterations_defintion -= 10;
+		fractal->shift_y += (1 * fractal->zoom);
+	else if (keysym == XK_plus || keysym == XK_KP_Add)
+		fractal->iterations_defintion += 5;
+	else if (keysym == XK_minus || keysym == XK_KP_Subtract)
+		fractal->iterations_defintion -= 5;
 	fractal_render(fractal);
 	return (0);
 }
@@ -62,24 +62,17 @@ int	julia_track(int x, int y, t_fractal *fractal)
 {
 	if (!ft_strncmp(fractal->name, "julia", 5))
 	{
-		fractal->julia_x = (map(x, -2, +2, 0, WIDTH)
+		fractal->julia_x = (map(x, -2, +2, WIDTH)
 				* fractal->zoom) + fractal->shift_x;
-		fractal->julia_y = (map(y, +2, -2, 0, HEIGHT)
+		fractal->julia_y = (map(y, +2, -2, HEIGHT)
 				* fractal->zoom) + fractal->shift_y;
 		fractal_render(fractal);
 	}
 	return (0);
 }
 
-int	ft_strncmp(char *s1, char *s2, int n)
+double	map(double unscaled_num, double new_min, double new_max, double old_max)
 {
-	if (NULL == s1 || NULL == s2 || n <= 0)
-		return (0);
-	while (*s1 == *s2 && n > 0 && *s1 != '\0')
-	{
-		++s1;
-		++s2;
-		--n;
-	}
-	return (*s1 - *s2);
+	return ((new_max - new_min) * (unscaled_num - 0)
+		/ (old_max - 0) + new_min);
 }

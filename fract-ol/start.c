@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: relisallesz <relisallesz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: rsalles- <rsalles-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:53:10 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/05/04 15:23:26 by relisallesz      ###   ########.fr       */
+/*   Updated: 2024/05/04 19:38:28 by rsalles-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	malloc_error(void)
 static void	data_init(t_fractal *fractal)
 {
 	fractal->escape_value = 4;
-	fractal->iterations_defintion = 42;
+	fractal->iterations_defintion = 100;
 	fractal->shift_x = 0.0;
 	fractal->shift_y = 0.0;
 	fractal->zoom = 1.0;

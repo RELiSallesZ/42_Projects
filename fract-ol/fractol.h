@@ -6,7 +6,7 @@
 /*   By: rsalles- <rsalles-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 20:38:49 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/05/04 17:23:21 by rsalles-         ###   ########.fr       */
+/*   Updated: 2024/05/04 20:26:54 by rsalles-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
  * We use a square to
  * keep the rendering math simple
 */
-# define WIDTH	800
-# define HEIGHT	800
+# define WIDTH	1000
+# define HEIGHT	1000
 /*
  * COLORS
 */
@@ -100,7 +100,7 @@ void		fractal_render(t_fractal *fractal);
 
 //*** math ***
 double		map(double unscaled_num, double new_min,
-				double new_max, double old_min, double old_max);
+				double new_max, double old_max);
 t_complex	sum_complex(t_complex z1, t_complex z2);
 t_complex	square_complex(t_complex z);
 

@@ -57,9 +57,12 @@
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
-    "*.embeddedhtml": "html",
-    "math.h": "c",
-    "limits.h": "c",
-    "mlx.h": "c"
-  }
+	"MLTable": "yaml",
+	"*.c": "c",
+	"*.embeddedhtml": "html",
+	"math.h": "c",
+	"limits.h": "c",
+	"mlx.h": "c",
+	"typeinfo": "c"
+}
 }

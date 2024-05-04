@@ -6,12 +6,24 @@
 /*   By: rsalles- <rsalles-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 19:43:29 by relisallesz       #+#    #+#             */
-/*   Updated: 2024/05/04 16:51:17 by rsalles-         ###   ########.fr       */
+/*   Updated: 2024/05/04 18:05:19 by rsalles-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include "minilibx-linux/mlx.h"
+
+int	ft_strncmp(char *s1, char *s2, int n)
+{
+	if (s1 == NULL || s2 == NULL || n <= 0)
+		return (0);
+	while (*s1 == *s2 && n > 0 && *s1 != '\0')
+	{
+		++s1;
+		++s2;
+		--n;
+	}
+	return (*s1 - *s2);
+}
 
 int	main(int ac, char **av)
 {
