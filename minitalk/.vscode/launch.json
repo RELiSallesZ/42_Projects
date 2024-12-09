@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/nfs/homes/rsalles-/relisallesz/ft_printf",
-      "program": "/nfs/homes/rsalles-/relisallesz/ft_printf/build/Debug/outDebug",
+      "cwd": "/nfs/homes/rsalles-/1Projects/Cursus/minitalk",
+      "program": "/nfs/homes/rsalles-/1Projects/Cursus/minitalk/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
